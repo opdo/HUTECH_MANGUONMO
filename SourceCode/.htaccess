@@ -1,0 +1,18 @@
+RewriteEngine on
+
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+#RewriteRule ^404$ wait.php
+
+RewriteRule ^([^\/.]*)$ index.php?controller=$1&action=home&%{QUERY_STRING}
+RewriteRule ^([^\/.]*)\/([^\/.]*)$ index.php?controller=$1&action=$2&%{QUERY_STRING}
+
+Options -Indexes
+
+ErrorDocument 404 /404
+ErrorDocument 403 /404
+ErrorDocument 500 /404
+
+
+
+
